@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t papiyinks/dolmart -f Dockerfile .
+
+script:
+  - docker run -e CI=true papiyinks/papistore npm run test -- --coverage
