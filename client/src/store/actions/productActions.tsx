@@ -1,4 +1,4 @@
-import axios from '../../axios-order';
+import axios from 'axios';
 import cookie from 'js-cookie';
 
 export function createProduct(event: {}) {

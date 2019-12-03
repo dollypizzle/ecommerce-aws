@@ -1,4 +1,4 @@
-import axios from '../../axios-order';
+import axios from 'axios';
 import setAuthorizationToken from '../../utils/setAuthorizationToken';
 import cookie from 'js-cookie';
 import jwtDecode from 'jwt-decode';
