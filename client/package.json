@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon -w server.js server.js",
     "build": "next build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest"
   },
   "dependencies": {
     "@types/js-cookie": "^2.2.3",
@@ -39,7 +40,11 @@
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.20",
     "@types/node": "^12.7.12",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.11.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   }
 }
