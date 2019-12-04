@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "../../axios-order";
-import Table from "./Table";
-import cookie from "js-cookie";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Table from './Table';
+import cookie from 'js-cookie';
 
-import { MDBContainer } from "mdbreact";
+import { MDBContainer } from 'mdbreact';
 
 export interface IntProd {
   _id: string;
@@ -29,14 +29,14 @@ const Show = ({ id }: ShowProps) => {
   const [user, setUser] = useState<IntUser | null>(null);
 
   useEffect(() => {
-    const authUser = cookie.get("user");
+    const authUser = cookie.get('user');
     if (authUser) {
       setUser(JSON.parse(authUser));
     }
 
     const fecthData = async () => {
       try {
-        const response = await axios.get(`/product/${id}`);
+        const response = await axios.get(`/api/product/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.log(error);

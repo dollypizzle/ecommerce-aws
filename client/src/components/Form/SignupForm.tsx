@@ -2,15 +2,16 @@ import React, { useState, FormEvent, SyntheticEvent } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import cookie from 'js-cookie';
+
 import {
   MDBContainer,
   MDBRow,
   MDBCol,
-  MDBIcon,
-  MDBBtn,
   MDBInput,
+  MDBBtn,
   MDBCard,
   MDBCardBody,
+  MDBIcon,
 } from 'mdbreact';
 
 const SignupForm = (props: {
@@ -18,14 +19,18 @@ const SignupForm = (props: {
     firstname: string;
     lastname: string;
     email: string;
-    phonenumber: string;
+    telephone: string;
     password: string;
   }) => void;
 }) => {
+  if (cookie.get('jwtToken')) {
+    Router.push('/products');
+  }
+
   const [firstname, setFirstname] = useState<string>('');
   const [lastname, setLastname] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [phonenumber, setPhonenumber] = useState<string>('');
+  const [telephone, setPhonenumber] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   const handleFirstnameChange = (event: FormEvent<HTMLInputElement>) =>
@@ -49,9 +54,10 @@ const SignupForm = (props: {
       firstname,
       lastname,
       email,
-      phonenumber,
+      telephone,
       password,
     };
+
     try {
       await props.userSignupRequest(data);
       Router.push('/products');
@@ -59,10 +65,6 @@ const SignupForm = (props: {
       console.log(error.response);
     }
   };
-
-  if (cookie.get('jwtToken')) {
-    Router.push('/products');
-  }
 
   return (
     <>
@@ -119,7 +121,7 @@ const SignupForm = (props: {
                       validate
                       error="wrong"
                       success="right"
-                      value={phonenumber}
+                      value={telephone}
                       onChange={handlePhonenumberChange}
                     />
                     <MDBInput

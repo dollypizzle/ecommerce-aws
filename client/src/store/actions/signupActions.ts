@@ -13,7 +13,7 @@ export function setCurrentUser(user: any) {
 
 export function userSignupRequest(userData: any) {
   return (dispatch: (arg0: { type: string; user: any }) => void) => {
-    return axios.post('/register', userData).then(res => {
+    return axios.post('/api/register', userData).then(res => {
       const token = res.data.token;
       const user = res.data.user;
       cookie.set('jwtToken', token);
