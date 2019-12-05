@@ -19,3 +19,15 @@ after_success:
   - docker push dollypizzle/ecommerce-client
   - docker push dollypizzle/ecommerce-nginx
   - docker push dollypizzle/ecommerce-server
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: ecommerce-aws
+  env: EcommerceAws-env
+  bucket_name: elasticbeanstalk-eu-west-2-092749212479
+  bucket_path: ecommerce-aws
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
