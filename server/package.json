@@ -2,12 +2,12 @@
   "name": "yelpcamp-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon build/index.js",
     "dev": "concurrently npm:start:*",
-    "start": "tsc && node build/index.js"
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
