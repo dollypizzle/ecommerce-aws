@@ -22,7 +22,7 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: eu-west-2
-  app: ecommerce-aws
+  app: eco-aws
   env: EcoAws-env
   bucket_name: elasticbeanstalk-eu-west-2-092749212479
   bucket_path: eco-aws
