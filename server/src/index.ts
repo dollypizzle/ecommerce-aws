@@ -14,12 +14,16 @@ app.use(userRouter);
 app.use(productRouter);
 
 mongoose
-  .connect(process.env.MONGODB_URL || '', {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    'mongodb+srv://mabawonku:dolapo@cluster0-uedra.mongodb.net/ecommerce-docker?retryWrites=true' ||
+      '',
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log('Mongo running'))
   .catch(e => console.log(e));
 
