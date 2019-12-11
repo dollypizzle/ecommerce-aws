@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "dollypizzle/ecommerce-client",
+      "image": "dollypizzle/eco-client",
       "hostname": "client",
       "essential": false,
       "memory": 128
@@ -23,14 +23,14 @@
     },
     {
       "name": "server",
-      "image": "dollypizzle/ecommerce-server",
+      "image": "dollypizzle/eco-server",
       "hostname": "api",
       "essential": false,
       "memory": 128
     },
     {
       "name": "nginx",
-      "image": "dollypizzle/ecommerce-nginx",
+      "image": "dollypizzle/eco-nginx",
       "hostname": "nginx",
       "essential": true,
       "memory": 128,
