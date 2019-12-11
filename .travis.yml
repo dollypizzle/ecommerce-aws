@@ -10,15 +10,15 @@ script:
 
 after_success:
   # build docker images
-  - docker build -t dollypizzle/eco-client ./client
   - docker build -t dollypizzle/eco-nginx ./nginx
   - docker build -t dollypizzle/eco-server ./server
+  - docker build -t dollypizzle/eco-client ./client
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take these build images and push to docker hub
-  - docker push dollypizzle/eco-client
   - docker push dollypizzle/eco-nginx
   - docker push dollypizzle/eco-server
+  - docker push dollypizzle/eco-client
 # deploy:
 #   provider: elasticbeanstalk
 #   region: eu-west-2
