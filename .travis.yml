@@ -3,7 +3,19 @@ services:
   - docker
 
 before_install:
-  - docker build -t dollypizzle/dolmart -f Dockerfile .
+  - docker build -t dollypizzle/react-ecommerce -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true dollypizzle/dolmart npm run test -- --coverage
+  - docker run -e CI=true dollypizzle/react-ecommerce npm test -- --coverage
+
+after_success:
+  # build docker images
+  - docker build -t dollypizzle/ecommerce-client ./client
+  - docker build -t dollypizzle/ecommerce-nginx ./nginx
+  - docker build -t dollypizzle/ecommerce-server ./server
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take these build images and push to docker hub
+  - docker push dollypizzle/ecommerce-client
+  - docker push dollypizzle/ecommerce-nginx
+  - docker push dollypizzle/ecommerce-server
