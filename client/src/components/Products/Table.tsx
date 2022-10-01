@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import axios from '../../axios-order';
+import axios from 'axios';
 import styled from 'styled-components';
 import Router, { useRouter } from 'next/router';
 import cookie from 'js-cookie';

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, SyntheticEvent, FormEvent } from "react";
-import axios from "../../axios-order";
-import cookie from "js-cookie";
-import Router from "next/router";
+import React, { useState, useEffect, SyntheticEvent, FormEvent } from 'react';
+import axios from 'axios';
+import cookie from 'js-cookie';
+import Router from 'next/router';
 
 import {
   MDBContainer,
@@ -10,18 +10,18 @@ import {
   MDBBtn,
   MDBInput,
   MDBIcon,
-} from "mdbreact";
+} from 'mdbreact';
 
 type EditProps = {
   id: string;
 };
 
 const Edit = ({ id }: EditProps): JSX.Element => {
-  const [name, setName] = useState<string>("");
-  const [brand, setBrand] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
-  const [image, setImage] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [brand, setBrand] = useState<string>('');
+  const [price, setPrice] = useState<string>('');
+  const [image, setImage] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
 
   const handleNameChange = (event: FormEvent<HTMLInputElement>) =>
     setName(event.currentTarget.value);
@@ -37,7 +37,7 @@ const Edit = ({ id }: EditProps): JSX.Element => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/product/${id}`);
+        const response = await axios.get(`/api/product/${id}`);
         setName(response.data.name);
         setBrand(response.data.brand);
         setPrice(response.data.price);
@@ -59,8 +59,8 @@ const Edit = ({ id }: EditProps): JSX.Element => {
       image,
       description,
     };
-    const token = cookie.get("jwtToken");
-    await axios.patch(`/product/${id}`, obj, {
+    const token = cookie.get('jwtToken');
+    await axios.patch(`/api/product/${id}`, obj, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

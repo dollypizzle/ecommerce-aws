@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
 import axios from 'axios';
-import TableImg from './Table';
 import {
   MDBCarousel,
   MDBCarouselCaption,
@@ -15,6 +11,7 @@ import {
   MDBRow,
   MDBAnimation,
 } from 'mdbreact';
+import TableImg from './Table';
 
 const Landing = () => {
   const [product, setProduct] = useState<[]>([]);
@@ -22,8 +19,9 @@ const Landing = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/products');
+        const response = await axios.get('/api/products');
         setProduct(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }

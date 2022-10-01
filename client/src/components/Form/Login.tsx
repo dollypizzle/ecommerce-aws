@@ -16,6 +16,10 @@ import {
 export const Login = (props: {
   login: (arg0: { email: string; password: string }) => void;
 }) => {
+  if (cookie.get('jwtToken')) {
+    Router.push('/products');
+  }
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -37,10 +41,6 @@ export const Login = (props: {
       console.log(error);
     }
   };
-
-  if (cookie.get('jwtToken')) {
-    Router.push('/products');
-  }
 
   return (
     <>
