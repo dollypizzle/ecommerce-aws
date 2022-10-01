@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import axios from '../../axios-order';
+import axios from 'axios';
 import Body from './Body';
 import cookie from 'js-cookie';
 import {
@@ -18,7 +18,7 @@ export const Products = () => {
   useEffect(() => {
     const fecthData = async () => {
       try {
-        const response = await axios.get('/products');
+        const response = await axios.get('/api/products');
         setProduct(response.data);
       } catch (error) {
         console.log(error);
