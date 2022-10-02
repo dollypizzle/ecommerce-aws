@@ -16,8 +16,7 @@ app.use(cors_1.default());
 app.use(user_1.userRouter);
 app.use(product_1.productRouter);
 mongoose_1.default
-    .connect('mongodb+srv://mabawonku:dolapo@cluster0-uedra.mongodb.net/ecommerce-docker?retryWrites=true' ||
-    '', {
+    .connect(process.env.MONGODB_URL || '', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
