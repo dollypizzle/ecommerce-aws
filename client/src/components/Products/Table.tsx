@@ -27,7 +27,7 @@ const Table = (props: IntProps) => {
     const token = cookie.get('jwtToken');
 
     try {
-      await axios.delete('/products/' + props.obj._id, {
+      await axios.delete(`/api/products/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
