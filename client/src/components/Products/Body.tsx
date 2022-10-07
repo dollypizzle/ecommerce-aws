@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { connect } from "react-redux";
-import { addToCart } from "../../store/actions/cartActions";
+import React from 'react';
+import Link from 'next/link';
+import { connect } from 'react-redux';
+import { addToCart } from '../../store/actions/cartActions';
 import {
   MDBBtn,
   MDBCol,
@@ -11,7 +11,7 @@ import {
   MDBCardImage,
   MDBCardTitle,
   MDBCardFooter,
-} from "mdbreact";
+} from 'mdbreact';
 
 type Prod = {
   _id: string;
@@ -30,13 +30,14 @@ export interface IntProps {
 const Body = (props: IntProps) => {
   const handleClick = (product: Prod) => {
     props.addToCart(product);
-    alert("Item added to cart!");
+    alert('Item added to cart!');
   };
   return (
-    <MDBCol className="col-md-3 pb-1">
+    <MDBCol className="col-sm-12 col-lg-3 col-md-4 pb-1">
       <MDBCard
-        className="mb-lg-0 mb-4 pb-2"
-        style={{ maxHeight: "34rem" }}
+        className="mb-lg-0 my-4"
+        style={{ maxHeight: '34rem' }}
+        cascade
         ecommerce
         wide
       >
@@ -47,30 +48,37 @@ const Body = (props: IntProps) => {
             <p>
               <strong>{props.obj.name}</strong>
             </p>
-          </MDBCardTitle>{" "}
-          <MDBBtn color="black">
-            <Link
-              href={`/product?id=${props.obj._id}`}
-              as={`/product/${props.obj._id}`}
-            >
-              <a className="text-light">More Info</a>
-            </Link>
-          </MDBBtn>
-          <MDBCardFooter>
-            <span className="float-left">Price: ₦{props.obj.price}</span>
-            <span className="float-right">
-              <MDBBtn
-                tag="a"
-                onClick={() => {
-                  handleClick(props.obj);
-                }}
-                size="lg"
-                className="p-1 m-0 mr-2 z-depth-0"
-              >
-                <MDBIcon icon="shopping-cart" />
-              </MDBBtn>
+          </MDBCardTitle>{' '}
+          {/* <MDBBtn color="primary"> */}
+          <Link
+            href={`/product?id=${props.obj._id}`}
+            as={`/product/${props.obj._id}`}
+          >
+            <a className="btn btn-black mb-4">More info</a>
+          </Link>
+          {/* </MDBBtn> */}
+          <MDBCol>
+            <span className="float-left">
+              Price: ₦{' '}
+              {props.obj.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+              {/* {props.obj.price} */}
             </span>
-          </MDBCardFooter>
+
+            <span className="float-right">
+              <MDBCol placement="top">
+                <MDBBtn
+                  tag="a"
+                  onClick={() => {
+                    handleClick(props.obj);
+                  }}
+                  size="lg"
+                  className="p-1 m-0 mr-2 z-depth-0"
+                >
+                  <MDBIcon icon="shopping-cart" />
+                </MDBBtn>
+              </MDBCol>
+            </span>
+          </MDBCol>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>
