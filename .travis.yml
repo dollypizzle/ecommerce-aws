@@ -16,7 +16,7 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take these build images and push to docker hub
-  - docker push dollypizzle/ecommerce-client
+  - docker push dollypizzle/ecommerce-client:tagname
   - docker push dollypizzle/ecommerce-nginx
   - docker push dollypizzle/ecommerce-server
 # deploy:
