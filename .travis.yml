@@ -3,22 +3,22 @@ services:
   - docker
 
 before_install:
-  - docker build -t dollypizzle/react-ecommerce -f ./client/Dockerfile.dev ./client
+  - docker build -t dollypizzle/react-eco -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true dollypizzle/react-ecommerce npm test -- --coverage
+  - docker run -e CI=true dollypizzle/react-eco npm test -- --coverage
 
 after_success:
   # build docker images
-  - docker build -t dollypizzle/ecommerce-client ./client
-  - docker build -t dollypizzle/ecommerce-nginx ./nginx
-  - docker build -t dollypizzle/ecommerce-server ./server
+  - docker build -t dollypizzle/eco-client ./client
+  - docker build -t dollypizzle/eco-nginx ./nginx
+  - docker build -t dollypizzle/eco-server ./server
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take these build images and push to docker hub
-  - docker push dollypizzle/ecommerce-client:tagname
-  - docker push dollypizzle/ecommerce-nginx
-  - docker push dollypizzle/ecommerce-server
+  - docker push dollypizzle/eco-client
+  - docker push dollypizzle/eco-nginx
+  - docker push dollypizzle/eco-server
 # deploy:
 #   provider: elasticbeanstalk
 #   region: eu-west-2
