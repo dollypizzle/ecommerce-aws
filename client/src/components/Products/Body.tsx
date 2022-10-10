@@ -54,7 +54,7 @@ const Body = (props: IntProps) => {
             href={`/product?id=${props.obj._id}`}
             as={`/product/${props.obj._id}`}
           >
-            <a className="btn btn-black mb-4">Show More info</a>
+            <a className="btn btn-black mb-4">Show More Info</a>
           </Link>
           {/* </MDBBtn> */}
           <MDBCol>
